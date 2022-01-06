@@ -1,50 +1,76 @@
-import react.Props
-import react.RBuilder
-import react.RComponent
-import react.State
-import react.dom.ButtonType
-import react.dom.ReactHTML.button
+import react.PropsWithChildren
+import react.dom.InputType
+import react.dom.ReactHTML.div
+import react.dom.ReactHTML.form
+import react.dom.ReactHTML.input
 import react.dom.ReactHTML.table
 import react.dom.ReactHTML.tbody
 import react.dom.ReactHTML.td
 import react.dom.ReactHTML.th
 import react.dom.ReactHTML.thead
 import react.dom.ReactHTML.tr
-import react.dom.label
 import react.functionComponent
+import react.useState
 import kotlin.math.abs
 import kotlin.random.Random
 
-external interface QuestionProps: Props {
-    var name: String
-}
-data class QuestionState(var name: String): State
-
-class Question(props: QuestionProps): RComponent<QuestionProps, QuestionState>(props){
-    init{
-        state=QuestionState(props.name)
-    }
-
-    override fun RBuilder.render(){
-        button{
-            attrs{
-                type=ButtonType.button
-                label {
-                    + state.name
-                }
-                className="btn btn-primary"
-                onClick={ _ ->
+//external interface QuestionProps: Props {
+//    var name: String
+//}
+//data class QuestionState(var name: String): State
+//
+//class Question(props: QuestionProps): RComponent<QuestionProps, QuestionState>(props){
+//    init{
+//        state=QuestionState(props.name)
+//    }
+//
+//    override fun RBuilder.render(){
+//        button{
+//            attrs{
+//                type=ButtonType.button
+//                label {
+//                    + state.name
+//                }
+//                className="btn btn-primary"
+//                onClick={ _ ->
 //                    setState(
 //                        QuestionState(name="押されたわ...")
 //                    )
+//
+//                }
+//            }
+//        }
+//    }
+//}
 
+val mockRandomNumberList = getRandomList(10, false)
+
+val questionApp = functionComponent<PropsWithChildren> {
+    val (randomNumberList, setRandomNumberList) = useState(
+        mockRandomNumberList
+    )
+
+    div{
+        form{
+            attrs{
+                onSubmit={
+                    setRandomNumberList(
+                        getRandomList(duplicate = false)
+                    )
+
+                    it.preventDefault()
+                }
+            }
+            input{
+                attrs{
+                    type=InputType.submit
+                    value="乱数を再生成"
+                    className="btn btn-primary"
                 }
             }
         }
     }
-}
 
-val test = functionComponent<Props> {
     table {
         attrs{
             className="table table-sm table-dark table-striped container-sm table-bordered"
@@ -66,20 +92,32 @@ val test = functionComponent<Props> {
             }
         }
         tbody{
-            val numbers = getRandomList()
-            for(i in numbers.indices){
+            randomNumberList.forEachIndexed { index, i ->
                 tr{
                     th{
                         attrs{
-                            scope="row text-center"
+                            scope="row"
                         }
-                        +"${i + 1}"
+                        + "${index+1}"
                     }
                     td{
-                        +"${numbers[i]}"
+                        + "$i"
                     }
                 }
             }
+//            for(i in randomNumberList.indices){
+//                tr{
+//                    th{
+//                        attrs{
+//                            scope="row text-center"
+//                        }
+//                        +"${i + 1}"
+//                    }
+//                    td{
+//                        +"${randomNumberList[i]}"
+//                    }
+//                }
+//            }
         }
     }
 }
