@@ -2,6 +2,7 @@ import react.dom.render
 import kotlinx.browser.document
 import kotlinx.browser.window
 import react.dom.ReactHTML.div
+import react.dom.ReactHTML.h3
 
 fun main() {
     window.onload={
@@ -46,7 +47,9 @@ fun main() {
                     attrs{
                         className="col-lg-5"
                     }
-                    + "おまけ"
+                    h3{
+                        +"おまけ"
+                    }
                     child(randomGenerator)
                 }
             }
