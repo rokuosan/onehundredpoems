@@ -46,7 +46,6 @@ fun main() {
                     attrs{
                         className="col-lg-5"
                     }
-                    + "おまけ"
                     child(randomGenerator)
                 }
             }
