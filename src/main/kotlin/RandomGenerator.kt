@@ -52,26 +52,44 @@ val randomGenerator = functionComponent<PropsWithChildren> {
 
     div{
         attrs{
-            className="mb-md-2"
+            className="mb-md-2 row"
         }
-        form{
+        div{
             attrs{
-                onSubmit={
-                    setRandomNumberList(
-                        getRandomList(duplicate = false, max = 100)
-                    )
-
-                    it.preventDefault()
-                }
+                className="col-md-auto"
             }
-            input{
+            form{
                 attrs{
-                    type=InputType.submit
-                    value="乱数を再生成"
-                    className="btn btn-secondary"
+                    onSubmit={
+                        setRandomNumberList(
+                            getRandomList(duplicate = false, max = 100)
+                        )
+
+                        it.preventDefault()
+                    }
+                }
+                input{
+                    attrs{
+                        type=InputType.submit
+                        value="乱数を再生成"
+                        className="btn btn-secondary"
+                    }
                 }
             }
         }
+//        div{
+//            attrs{
+//                className="col-md-auto"
+//            }
+//            div{
+//                attrs{
+//                    className="justify-content-center"
+//                }
+//                h3{
+//                    +"おまけ"
+//                }
+//            }
+//        }
     }
 
     table {
