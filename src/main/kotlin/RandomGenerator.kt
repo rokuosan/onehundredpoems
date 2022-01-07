@@ -43,19 +43,22 @@ import kotlin.random.Random
 //    }
 //}
 
-val mockRandomNumberList = getRandomList(10, false)
+val mockRandomNumberList = getRandomList(10, false, 100)
 
-val questionApp = functionComponent<PropsWithChildren> {
+val randomGenerator = functionComponent<PropsWithChildren> {
     val (randomNumberList, setRandomNumberList) = useState(
         mockRandomNumberList
     )
 
     div{
+        attrs{
+            className="mb-md-2"
+        }
         form{
             attrs{
                 onSubmit={
                     setRandomNumberList(
-                        getRandomList(duplicate = false)
+                        getRandomList(duplicate = false, max = 100)
                     )
 
                     it.preventDefault()
@@ -65,7 +68,7 @@ val questionApp = functionComponent<PropsWithChildren> {
                 attrs{
                     type=InputType.submit
                     value="乱数を再生成"
-                    className="btn btn-primary"
+                    className="btn btn-secondary"
                 }
             }
         }
@@ -105,24 +108,11 @@ val questionApp = functionComponent<PropsWithChildren> {
                     }
                 }
             }
-//            for(i in randomNumberList.indices){
-//                tr{
-//                    th{
-//                        attrs{
-//                            scope="row text-center"
-//                        }
-//                        +"${i + 1}"
-//                    }
-//                    td{
-//                        +"${randomNumberList[i]}"
-//                    }
-//                }
-//            }
         }
     }
 }
 
-fun getRandomList(count: Int=10, duplicate: Boolean=true): IntArray{
+fun getRandomList(count: Int=10, duplicate: Boolean=true, max:Int = 10): IntArray{
 //    val poemList: ArrayList<Poem> = arrayListOf()
 //    var data: Poem
 //
@@ -135,7 +125,7 @@ fun getRandomList(count: Int=10, duplicate: Boolean=true): IntArray{
 
     // 繰り返し処理
     repeat(count){
-        randomList.add(abs(Random.nextInt()) % 10 + 1)
+        randomList.add(abs(Random.nextInt()) % max + 1)
     }
 
     if(!duplicate){
