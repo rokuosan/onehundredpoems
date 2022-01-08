@@ -1,3 +1,5 @@
+package components
+
 import react.PropsWithChildren
 import react.dom.ButtonType
 import react.dom.ReactHTML.button
@@ -12,12 +14,14 @@ import react.useState
  * とりあえず一問一答で実装したもの
  */
 val simplePoemApp = functionComponent<PropsWithChildren> {
-    val poemList = Poems.values().toList()
+    val poemList = Poems.values().toMutableList()
     val (count, setCount) = useState(0)
     val (poem, setPoem) = useState(poemList[count].toPoem())
     val (poemTitle, setPoemTitle) = useState(poem.topContent)
     val (poemAnswer, setPoemAnswer) = useState("")
     val (poemRemind, setPoemRemind) = useState("")
+
+    println(poemList)
 
     div{
         div{
@@ -25,7 +29,7 @@ val simplePoemApp = functionComponent<PropsWithChildren> {
                 className="text-center mt-md-5 mb-md-5"
             }
             h1{
-                +poemTitle
+                +"${poem.id}: $poemTitle"
             }
             div{
                 attrs{
@@ -100,7 +104,7 @@ val simplePoemApp = functionComponent<PropsWithChildren> {
                                 setPoemRemind("")
                             }else{
                                 setPoemTitle("おわり！")
-                                setPoemAnswer("")
+                                setPoemAnswer("もう一度やる場合はリロードしてね。")
                                 setPoemRemind("")
                                 setPoem(Poem())
                             }

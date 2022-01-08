@@ -1,3 +1,5 @@
+package components
+
 import react.PropsWithChildren
 import react.dom.InputType
 import react.dom.ReactHTML.div
@@ -131,10 +133,10 @@ val randomGenerator = functionComponent<PropsWithChildren> {
 }
 
 fun getRandomList(count: Int=10, duplicate: Boolean=true, max:Int = 10): IntArray{
-//    val poemList: ArrayList<Poem> = arrayListOf()
-//    var data: Poem
+//    val poemList: ArrayList<Components.Poem> = arrayListOf()
+//    var data: Components.Poem
 //
-//    for(p in Poems.values()){
+//    for(p in Components.Poems.values()){
 //        data = p.toPoem()
 //        poemList.add(data)
 //    }
@@ -154,7 +156,7 @@ fun getRandomList(count: Int=10, duplicate: Boolean=true, max:Int = 10): IntArra
 
 }
 
-//var mockPoemList = listOf(Poem(topContent = "かくとだに"), Poem(topContent = "あけぬれば"))
+//var mockPoemList = listOf(Components.Poem(topContent = "かくとだに"), Components.Poem(topContent = "あけぬれば"))
 //
 //val app = functionComponent<Props> {
 //    val (poemList, setPoemList) = useState(mockPoemList)
@@ -165,7 +167,7 @@ fun getRandomList(count: Int=10, duplicate: Boolean=true, max:Int = 10): IntArra
 //            attrs{
 //                onSubmit={
 //                    setPoemList(poemList.toMutableList().apply {
-//                        add(Poem(topContent = inputText))
+//                        add(Components.Poem(topContent = inputText))
 //                    })
 //                    setInputText("")
 //                    it.preventDefault()

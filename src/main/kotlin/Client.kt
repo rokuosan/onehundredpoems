@@ -1,3 +1,5 @@
+import components.randomGenerator
+import components.simplePoemApp
 import react.dom.render
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -19,7 +21,7 @@ fun main() {
             }
         }
 
-        render(document.getElementById("randomGenerator")){
+        render(document.getElementById("Components.getRandomGenerator")){
 //            div{
 //                attrs{
 //                    className="row justify-content-md-center"
@@ -29,7 +31,7 @@ fun main() {
 //                        className="col-lg-5"
 //                    }
 //                    h1{
-//                        +"OneHundred Poems"
+//                        +"OneHundred Components.Poems"
 //                    }
 //                    child(Question::class){
 //                        attrs{
