@@ -3,11 +3,15 @@ package components
 import components.SceneType.*
 import react.PropsWithChildren
 import react.dom.ButtonType
+import react.dom.HTMLAttributeAnchorTarget
+import react.dom.ReactHTML.a
 import react.dom.ReactHTML.button
 import react.dom.ReactHTML.div
 import react.dom.ReactHTML.h1
 import react.dom.ReactHTML.h3
 import react.dom.ReactHTML.label
+import react.dom.ReactHTML.p
+import react.dom.ReactHTML.section
 import react.dom.ReactHTML.span
 import react.functionComponent
 import react.useState
@@ -31,7 +35,7 @@ val app = functionComponent<PropsWithChildren> {
                 }
                 div{
                     attrs{
-                        className="d-grid gap-2 d-md-flex justify-content-md-center mt-5"
+                        className="d-grid gap-2 d-md-flex justify-content-md-center mt-5 mb-5"
                     }
                     button{
                         attrs{
@@ -44,6 +48,40 @@ val app = functionComponent<PropsWithChildren> {
                         }
                         span{
                             + "ゲームを開始する"
+                        }
+                    }
+                }
+                div{
+                    attrs{
+                        className="container mt-5"
+                    }
+                    div{
+                        attrs{
+                            className="row"
+                        }
+                        div{
+                            attrs{
+                                className="col"
+                            }
+                            section{
+                                p{
+                                    +"百人一首の下50句をまとめて問題にしたものです。下50句だけを最小の努力で一時的に記憶したい場合に向いています。それ以外の用途は、決まり字の違いなどの理由から推奨できません。"
+                                }
+                            }
+                            section{
+                                p{
+                                    +"また、今回の問題を作成するにあたって参考にしたサイトは"
+                                    a{
+                                        attrs{
+                                            href="https://polygondrill.com/firstkaruta/list/list-kimari-goro"
+                                            target=HTMLAttributeAnchorTarget._blank
+                                            rel="noopener noreferrer"
+                                        }
+                                        +"こちら"
+                                    }
+                                    +"です。"
+                                }
+                            }
                         }
                     }
                 }
@@ -112,7 +150,7 @@ val poemGame = functionComponent<PropsWithChildren> {
             }
             div{
                 attrs{
-                    className="col-4 text-end"
+                    className="col-auto text-end"
                 }
                 h3{
                     + "No.${poem.id}"
@@ -139,22 +177,22 @@ val poemGame = functionComponent<PropsWithChildren> {
         }
         div{
             attrs{
-                className="row row-cols-2 gy-2 align-items-end"
+                className="row row-cols-2 gy-2 align-items-center"
             }
             div{
                 attrs{
-                    className="col-4 text-end border-end border-2"
+                    className="col-3 text-end border-end border-2"
                 }
                 span{
                     attrs{
                         className="fs-4 fw-light fst-italic"
                     }
-                    +"答え "
+                    +"こたえ "
                 }
             }
             div{
                 attrs{
-                    className="col-8"
+                    className="col-9"
                 }
                 span{
                     attrs{
@@ -165,7 +203,7 @@ val poemGame = functionComponent<PropsWithChildren> {
             }
             div{
                 attrs{
-                    className="col-4 text-end border-end border-2"
+                    className="col-3 text-end border-end border-2"
                 }
                 span{
                     attrs{
@@ -176,7 +214,7 @@ val poemGame = functionComponent<PropsWithChildren> {
             }
             div{
                 attrs{
-                    className="col-8"
+                    className="col-9"
                 }
                 span{
                     attrs{
