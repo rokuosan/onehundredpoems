@@ -461,7 +461,7 @@ val poemGame = functionComponent<PropsWithChildren> {
                             disabled=count==0
                             onClick={ event ->
                                 event.preventDefault()
-                                if(count < poemList.size-1){
+                                if(count < poemList.size){
                                     setCount(count-1)
                                     val p = poemList[count-1].toPoem()
                                     setPoem(p)
