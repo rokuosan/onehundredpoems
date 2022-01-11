@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib-js"))
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react:17.0.2-pre.240-kotlin-1.5.30")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:17.0.2-pre.240-kotlin-1.5.30")
 }

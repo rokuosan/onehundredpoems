@@ -8,7 +8,7 @@
         </sourceSets>
         <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
         <externalSystemTestTasks>
-          <externalSystemTestTask>browserTest|onehundredpoems:test|js</externalSystemTestTask>
+          <externalSystemTestTask>browserTest|:|js</externalSystemTestTask>
         </externalSystemTestTasks>
         <testOutputPath>$MODULE_DIR$/../../build/js/packages/onehundredpoems-test/kotlin/onehundredpoems-test.js</testOutputPath>
         <compilerSettings />
